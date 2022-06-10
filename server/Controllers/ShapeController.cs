@@ -9,10 +9,15 @@ namespace server.Controllers;
 public class ShapeController : ControllerBase
 {
     [HttpPost]
-    public IActionResult GetDrawing(string text)
+    public IActionResult Drawing(ShapeInput input)
     {
-        var instruction = new Instruction(text);
+        var instruction = new Instruction(input.text);
         var drawer = ShapeDrawerFactory.GetDrawer(instruction);
         return Ok(drawer);
+    }
+
+    public class ShapeInput
+    {
+        public string text {get;set;}
     }
 }

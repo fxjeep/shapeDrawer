@@ -37,13 +37,13 @@ public class Instruction
         var lowerCase = text.ToLower();
         var nameAndRest=lowerCase.Split(new string[]{With}, StringSplitOptions.RemoveEmptyEntries);
 
-        if (nameAndRest.Length>=0)
+        if (nameAndRest.Length>=1)
         {
             Name = ExtractName(nameAndRest[0]);
             NameInput = nameAndRest[0];
         }
 
-        if (nameAndRest.Length>=1)
+        if (nameAndRest.Length>=2)
         {
             Actions = ExtractActions(nameAndRest[1]);
         }

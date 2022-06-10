@@ -21,8 +21,7 @@ public class DrawerTests
         Assert.IsType<CircleDrawer>(drawer);
         
         var realDrawer= drawer as CircleDrawer;
-        Assert.Equal(10, realDrawer?.Radius1);
-        Assert.Equal(10, realDrawer?.Radius2);
+        Assert.Equal(10, realDrawer?.Radius);
     }
 
     [Fact]
@@ -40,12 +39,13 @@ public class DrawerTests
         });
 
         var drawer =  ShapeDrawerFactory.GetDrawer(instruction);
-        Assert.IsType<CircleDrawer>(drawer);
+        Assert.IsType<OvalDrawer>(drawer);
         
-        var realDrawer= drawer as CircleDrawer;
+        var realDrawer= drawer as OvalDrawer;
         Assert.Equal(10, realDrawer?.Radius1);
         Assert.Equal(20, realDrawer?.Radius2);
     }
+
 
     [Fact]
     public void RectangleDrawerTest()

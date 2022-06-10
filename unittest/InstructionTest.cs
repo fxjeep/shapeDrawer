@@ -40,4 +40,19 @@ public class InstructionTests
         Assert.Equal(secondMeasure, instruction.Actions[1].Measure);
         Assert.Equal(secondAmount, instruction.Actions[1].Amount);
     }
+    
+    [Fact]
+    public void InvalidInput()
+    {
+        var instruction = new Instruction("thisisainvalidtextinput");
+        Assert.Equal(ShapeName.Name.None, instruction.Name);
+    }
+
+    [Fact]
+    public void InvalidInput_With()
+    {
+        var instruction = new Instruction("thisisainvalidtextinput with someinvalidinputs");
+        Assert.Equal(ShapeName.Name.None, instruction.Name);
+        Assert.Equal(Measurement.Name.None, instruction.Actions[0].Measure);
+    }
 }

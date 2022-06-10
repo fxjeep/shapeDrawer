@@ -13,8 +13,9 @@ public class ShapeDrawerFactory
         switch(instruction.Name)
         {
             case ShapeName.Name.Circle:
-            case ShapeName.Name.Oval:
                 return new CircleDrawer(instruction);
+            case ShapeName.Name.Oval:
+                return new OvalDrawer(instruction);
             case ShapeName.Name.Rectangle:
                 return new RectangleDrawer(instruction);
             case ShapeName.Name.Parallelogram:
