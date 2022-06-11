@@ -193,6 +193,48 @@ public class DrawerTests
         Assert.True(AlmostEqualTo(13.0656296, realDrawer?.Points[0].X));
     }
 
+    [Fact]
+    public void EquilateralTriangleDrawer_Test()
+    {
+        var instruction = new Instruction();
+        instruction.Name = ShapeName.Name.EquilateralTriangle;
+        instruction.Actions.Add(new server.TextParser.Action(){
+            Measure = Measurement.Name.SideLength,
+            Amount = 10
+        });
+
+        var drawer =  ShapeDrawerFactory.GetDrawer(instruction);
+        Assert.IsType<EquilateralTriangleDrawer>(drawer);
+        
+        var realDrawer= drawer as EquilateralTriangleDrawer;
+        Assert.Equal(3, realDrawer?.Points.Count);
+        Assert.True(AlmostEqualTo(10, realDrawer?.Points[1].X));
+    }
+
+    [Fact]
+    public void IsoscelesTriangleDrawer_Test()
+    {
+        var instruction = new Instruction();
+        instruction.Name = ShapeName.Name.IsoscelesTriangle;
+        instruction.Actions.Add(new server.TextParser.Action(){
+            Measure = Measurement.Name.Width,
+            Amount = 10
+        });
+
+        instruction.Actions.Add(new server.TextParser.Action(){
+            Measure = Measurement.Name.Height,
+            Amount = 20
+        });
+
+        var drawer =  ShapeDrawerFactory.GetDrawer(instruction);
+        Assert.IsType<IsoscelesTriangleDrawer>(drawer);
+        
+        var realDrawer= drawer as IsoscelesTriangleDrawer;
+        Assert.Equal(3, realDrawer?.Points.Count);
+        Assert.True(AlmostEqualTo(10, realDrawer?.Points[1].X));
+    }
+
+
     public static bool AlmostEqualTo(double value1, double? value2)
     {
         if (!value2.HasValue) return false;

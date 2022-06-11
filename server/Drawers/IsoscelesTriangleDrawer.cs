@@ -6,25 +6,20 @@ public class IsoscelesTriangleDrawer : PointDrawer
 {
     public IsoscelesTriangleDrawer(Instruction instruction) : base(instruction.Name.ToString())
     {
-        var sideMeasures = instruction.Actions.Where(x=>x.Measure == Measurement.Name.SideLength).ToList();
-        if (sideMeasures.Count == 2 && CanFormTriangle(sideMeasures[0].Amount, sideMeasures[2].Amount))
+        var widthMeasures = instruction.Actions.Where(x=>x.Measure == Measurement.Name.Width).ToList();
+        var heightMeasures = instruction.Actions.Where(x=>x.Measure == Measurement.Name.Height).ToList();
+        if (widthMeasures.Count == 1 && heightMeasures.Count ==1)
         {
             InvalidInstruction = false;
-            CalculatePoints(sideMeasures[0].Amount, sideMeasures[1].Amount);
+            CalculatePoints(widthMeasures[0].Amount, heightMeasures[0].Amount);
         }
     }
 
-    public bool CanFormTriangle(double side1, double side2)
+    public void CalculatePoints(double width, double height)
     {
-        return side1+side1>=side2;
-    }
-
-    public void CalculatePoints(double side1, double side2)
-    {
-        var height = Math.Sqrt(side1*side1+(side2/2)*(side2/2));
         Points = new List<Point>();
         Points.Add(new Point(0,0));
-        Points.Add(new Point(side2, 0));
-        Points.Add(new Point(side2/2, height));
+        Points.Add(new Point(width, 0));
+        Points.Add(new Point(width/2, height));
     }
 }

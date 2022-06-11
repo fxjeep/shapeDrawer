@@ -24,7 +24,14 @@ public class ShapeDrawerFactory
             case ShapeName.Name.Hexagon:
             case ShapeName.Name.Heptagon:
             case ShapeName.Name.Octagon:
+            case ShapeName.Name.Square:
                 return new PolygonDrawer(instruction);
+            case ShapeName.Name.EquilateralTriangle:
+                return new EquilateralTriangleDrawer(instruction);
+            case ShapeName.Name.IsoscelesTriangle:
+                return new IsoscelesTriangleDrawer(instruction);
+            case ShapeName.Name.ScaleneTriangle:
+                return new ScaleneTriangleDrawer(instruction);
             default:
                 return new NoneDrawer(instruction);
             

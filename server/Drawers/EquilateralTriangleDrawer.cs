@@ -16,9 +16,10 @@ public class EquilateralTriangleDrawer : PointDrawer
 
     public void CalculatePoints(double side1)
     {
+        double angle =  Math.PI * 60 / 180.0;
         Points = new List<Point>();
         Points.Add(new Point(0,0));
         Points.Add(new Point(side1, 0));
-        Points.Add(new Point(side1/2, side1*Math.Sin(60)));
+        Points.Add(new Point(side1/2, side1*Math.Sin(angle)));
     }
 }
