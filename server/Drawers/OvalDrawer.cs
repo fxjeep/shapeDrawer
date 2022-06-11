@@ -8,7 +8,7 @@ public class OvalDrawer : DrawerBase
 {
     public int Radius1 {get;set;} = 0;
     public int Radius2 {get;set;} = 0;
-    public OvalDrawer(Instruction instruction) : base(instruction.Name.ToString())
+    public OvalDrawer(Instruction instruction) : base(instruction.Name.ToString(), Drawers.SVGType.Oval)
     {
         //expect one or two radius 
         var radiusMeasures = instruction.Actions.Where(x=>x.Measure == Measurement.Name.Radius).ToList();

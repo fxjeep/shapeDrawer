@@ -2,9 +2,8 @@ using server.TextParser;
 
 namespace server.Drawers;
 
-public class ParallelogramDrawer : DrawerBase
+public class ParallelogramDrawer : PointDrawer
 {
-    public List<Point> Points {get;set;} = new List<Point>();
     public ParallelogramDrawer(Instruction instruction) : base(instruction.Name.ToString())
     {
          var sideMeasures = instruction.Actions.Where(x=>x.Measure == Measurement.Name.SideLength).ToList();
